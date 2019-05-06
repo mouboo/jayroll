@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <head>
+	<head>
 		<title>Jayroll 0.3</title>
 		<meta charset="utf-8"  />
 		<style>
@@ -18,16 +18,16 @@
 				margin: 10px 0px 10px 0px;
 				padding: 10px;
 				background-color: #fffedf;
-	 			font-size: 20px;
+				font-size: 20px;
 				text-align: left;
 			}
 			input{
-			  	outline: 0;
+				outline: 0;
 				text-align: center; 
 				width: 2.5ex;
-	  			font-size: 25px;
-	  			background-color: #FFF;
-	  			outline: none;
+				font-size: 25px;
+				background-color: #FFF;
+				outline: none;
 				border: 0px;
 				-webkit-border-radius: 5px;
 				-moz-border-radius: 5px;
@@ -40,18 +40,18 @@
 				background-color: #fffedf;			
 				margin: 10px;
 				padding: 5px 30px 5px 30px;
-	  			display: inline-block;
-	 			font-size: 20px;
-	  			appearance: none;
-	  			box-shadow: none;
-	  			border-radius: 0;
+				display: inline-block;
+				font-size: 20px;
+				appearance: none;
+				box-shadow: none;
+				border-radius: 0;
 				-moz-border-radius:5px;
 				-webkit-border-radius:5px;
 				border-radius:5px;
 				border: 0px;
 			}
 			button:focus {
-	  			outline: none
+				outline: none
 			}
 			.hist {
 				text-align: left;
@@ -72,26 +72,29 @@
 				for (i = 0; i < nint; i++) {
 					nums.push(Math.floor(Math.random()*sint)+1);
 				}
+				var numssum = nums.reduce((a, b) => a + b, 0);
 				// Update text on page
 				var numsfmt = nums.toString().replace(/,/g,", ");	
-				document.getElementById("rollres").innerHTML = numsfmt;
-				
-	            		if (nint === 4 && sint==20) { 
-	                		blazeIt();
-	            		} else {
-	                		unBlazeIt();    
-	           		}
+				document.getElementById("rollres").innerHTML = numsfmt + "<br>Sum: " + numssum;
+				if (nint === 4 && sint==20) { 
+    				blazeIt();
+				} else {
+    				unBlazeIt();    
+				}
 				// Add entry to roll history
 				rollCount += 1;
+				
 				rollHistoryEntry = '<p class="hist"><i>Roll ' 
-									+ rollCount 
-									+ " (" 
-									+ n 
-									+ "d" 
-									+ s 
-									+ "):</i><br>" 
-									+ numsfmt 
-									+ "</p>";
+					+ rollCount 
+					+ ", " 
+					+ n 
+					+ "d" 
+					+ s
+					+", sum: "
+					+ numssum 
+					+ ".</i><br>" 
+					+ numsfmt 
+					+ "</p>";
 				document.getElementById("history").insertAdjacentHTML("afterbegin", rollHistoryEntry );
 			}
 			function blazeIt() {
@@ -112,19 +115,19 @@
 	</head>
 
 	<body>
-	<div id="maincol">
-		<h1 id="title">Diceroll 0.2</h1>
-		<p id="rollres" class="rollres">(Roll results)</p>
-		<form>
-			Dice:
-			<input type="text" name="dn" value="1" id="dicenumber" maxlength="2" size="2">
-			d
- 			<input type="text" name="ds" value="6" id="dicesides" maxlength="2" size="2"><br>
-		</form>
+		<div id="maincol">
+			<h1 id="title">Diceroll 0.2</h1>
+			<p id="rollres" class="rollres">(Roll results)</p>
+			<form>
+				Dice:
+				<input type="text" name="dn" value="1" id="dicenumber" maxlength="2" size="2">
+				d
+				<input type="text" name="ds" value="6" id="dicesides" maxlength="2" size="2"><br>
+			</form>
 
-		<button id="rollbutton" type="button" onclick="roll()">Roll</button>
-		<div id="history">
+			<button id="rollbutton" type="button" onclick="roll()">Roll</button>
+			<div id="history">
+			</div>
 		</div>
-	</div>
 	</body>
 </html>
