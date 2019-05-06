@@ -3,113 +3,112 @@
     <head>
 		<title>Jayroll 0.3</title>
 		<meta charset="utf-8"  />
-	<style>
-		#maincol{
-			background-color: transparent;
-			width: 350px;
-			margin: 0 auto;
-		}
-		body {background-color: powderblue; text-align: center; }
-		p {}
-		.rollres{
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			margin: 10px 0px 10px 0px;
-			padding: 10px;
-			background-color: #fffedf;
- 			font-size: 20px;
-			text-align: left;
-		}
-		input{
-		  	outline: 0;
-			text-align: center; 
-			width: 2.5ex;
-  			font-size: 25px;
-  			background-color: #FFF;
-  			outline: none;
-			border: 0px;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-		}
-		form{ 
-			font-size: 25px;
-		}
-		button {
-			background-color: #fffedf;			
-			margin: 10px;
-			padding: 5px 30px 5px 30px;
-  			display: inline-block;
- 			font-size: 20px;
-  			appearance: none;
-  			box-shadow: none;
-  			border-radius: 0;
-			-moz-border-radius:5px;
-			-webkit-border-radius:5px;
-			border-radius:5px;
-			border: 0px;
-		}
-		button:focus {
-  			outline: none
-		}
-		.hist {
-			text-align: left;
-		}
-
-	</style>
-	<script>
-		var rollCount = 0;
-		function roll() {
-			// Get form input strings
-			var n = document.getElementById('dicenumber').value;
-			var s = document.getElementById('dicesides').value; 
-			// Convert to ints
-			var nint = parseInt(n,10);
-			var sint = parseInt(s,10);
-			// Generate nint random numbers from 1 to sint (inclusive) and put in nums
-			var nums = [];
-			var i;
-			for (i = 0; i < nint; i++) {
-				nums.push(Math.floor(Math.random()*sint)+1);
+		<style>
+			#maincol{
+				background-color: transparent;
+				width: 350px;
+				margin: 0 auto;
 			}
-			// Update text on page
-			var numsfmt = nums.toString().replace(/,/g,", ");	
-			document.getElementById("rollres").innerHTML = numsfmt;
-			
-            		if (nint === 4 && sint==20) { 
-                		blazeIt();
-            		} else {
-                		unBlazeIt();    
-           		}
-			// Add entry to roll history
-			rollCount += 1;
-			rollHistoryEntry = '<p class="hist"><i>Roll ' 
-								+ rollCount 
-								+ " (" 
-								+ n 
-								+ "d" 
-								+ s 
-								+ "):</i><br>" 
-								+ numsfmt 
-								+ "</p>";
-			document.getElementById("history").insertAdjacentHTML("afterbegin", rollHistoryEntry );
-		}
-		function blazeIt() {
-			document.body.style.backgroundColor = "purple";
-			document.getElementById("title").style.color = "pink";
-			document.getElementById("title").innerHTML = "420 bLaZe iT!!1!";
-			document.getElementById("rollres").style.backgroundColor = "olive";
-			document.getElementById("rollres").style.color = "magenta";
-		}
-		function unBlazeIt() {
-			document.body.style.backgroundColor = "powderblue";
-			document.getElementById("title").style.color = "black";
-			document.getElementById("title").innerHTML = "Jayroll 0.3";
-			document.getElementById("rollres").style.backgroundColor = "#fffedf";
-			document.getElementById("rollres").style.color = "black";
-		}
-	</script>
+			body {background-color: powderblue; text-align: center; }
+			p {}
+			.rollres{
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				margin: 10px 0px 10px 0px;
+				padding: 10px;
+				background-color: #fffedf;
+	 			font-size: 20px;
+				text-align: left;
+			}
+			input{
+			  	outline: 0;
+				text-align: center; 
+				width: 2.5ex;
+	  			font-size: 25px;
+	  			background-color: #FFF;
+	  			outline: none;
+				border: 0px;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+			}
+			form{ 
+				font-size: 25px;
+			}
+			button {
+				background-color: #fffedf;			
+				margin: 10px;
+				padding: 5px 30px 5px 30px;
+	  			display: inline-block;
+	 			font-size: 20px;
+	  			appearance: none;
+	  			box-shadow: none;
+	  			border-radius: 0;
+				-moz-border-radius:5px;
+				-webkit-border-radius:5px;
+				border-radius:5px;
+				border: 0px;
+			}
+			button:focus {
+	  			outline: none
+			}
+			.hist {
+				text-align: left;
+			}
+		</style>
+		<script>
+			var rollCount = 0;
+			function roll() {
+				// Get form input strings
+				var n = document.getElementById('dicenumber').value;
+				var s = document.getElementById('dicesides').value; 
+				// Convert to ints
+				var nint = parseInt(n,10);
+				var sint = parseInt(s,10);
+				// Generate nint random numbers from 1 to sint (inclusive) and put in nums
+				var nums = [];
+				var i;
+				for (i = 0; i < nint; i++) {
+					nums.push(Math.floor(Math.random()*sint)+1);
+				}
+				// Update text on page
+				var numsfmt = nums.toString().replace(/,/g,", ");	
+				document.getElementById("rollres").innerHTML = numsfmt;
+				
+	            		if (nint === 4 && sint==20) { 
+	                		blazeIt();
+	            		} else {
+	                		unBlazeIt();    
+	           		}
+				// Add entry to roll history
+				rollCount += 1;
+				rollHistoryEntry = '<p class="hist"><i>Roll ' 
+									+ rollCount 
+									+ " (" 
+									+ n 
+									+ "d" 
+									+ s 
+									+ "):</i><br>" 
+									+ numsfmt 
+									+ "</p>";
+				document.getElementById("history").insertAdjacentHTML("afterbegin", rollHistoryEntry );
+			}
+			function blazeIt() {
+				document.body.style.backgroundColor = "purple";
+				document.getElementById("title").style.color = "pink";
+				document.getElementById("title").innerHTML = "420 bLaZe iT!!1!";
+				document.getElementById("rollres").style.backgroundColor = "olive";
+				document.getElementById("rollres").style.color = "magenta";
+			}
+			function unBlazeIt() {
+				document.body.style.backgroundColor = "powderblue";
+				document.getElementById("title").style.color = "black";
+				document.getElementById("title").innerHTML = "Jayroll 0.3";
+				document.getElementById("rollres").style.backgroundColor = "#fffedf";
+				document.getElementById("rollres").style.color = "black";
+			}
+		</script>
 	</head>
 
 	<body>
